@@ -1,0 +1,48 @@
+name: Deploy APT Repository
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: configure_pages
+        uses: actions/configure-pages@v3
+
+      - name: Install Dependencies
+        run: sudo apt update && sudo apt install -y reprepro
+
+      - name: Import GPG Private Key
+        run: echo "$GPG_PRIVATE_KEY" | gpg --import
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+
+      - name: Generate APT Repository
+        run: scripts/generate-repo.sh
+        env:
+          GITHUB_REPO_NAME: ${{ github.event.repository.name }}
+          GITHUB_PAGES_URL: ${{ steps.configure_pages.outputs.base_url }}
+
+      - uses: actions/upload-pages-artifact@v2
+        with:
+          path: public
+
+      - id: deployment
+        uses: actions/deploy-pages@v2

@@ -1,0 +1,7 @@
+Origin: ros-apt-template
+Label: ros-apt-template
+Codename: jammy
+Architectures: source amd64
+Components: main
+Description: ros-apt-template
+SignWith: 432FDB10E497996DAE402B78E0DC8014764DCCF5
