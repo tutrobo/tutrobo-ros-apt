@@ -38,6 +38,7 @@ jobs:
         run: |
           cd debs/jammy
           ../../scripts/download-release.sh tutrobo/jsk_visualization 20230816
+          ../../scripts/download-release.sh tutrobo/casadi_vendor 20230817
 
       - name: Generate APT Repository
         run: scripts/generate-repo.sh
