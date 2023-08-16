@@ -3,7 +3,7 @@
 set -e
 
 if [ -n $2 ]; then
-  tag="tag/$2"
+  tag="tags/$2"
 else
   tag="latest"
 fi
