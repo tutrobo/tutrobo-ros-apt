@@ -36,10 +36,11 @@ jobs:
 
       - name: Download Releases
         run: |
-          cd debs/jammy
-          ../../scripts/download-release.sh tutrobo/jsk_visualization 20230816
-          ../../scripts/download-release.sh tutrobo/casadi_vendor 20230817
-          ../../scripts/download-release.sh tutrobo/Groot 20230817
+          mkdir -p debs/jammy && cd debs/jammy
+          ../../scripts/download-release.sh tutrobo/jsk_visualization 20230818
+          ../../scripts/download-release.sh tutrobo/casadi_vendor 20230818
+          ../../scripts/download-release.sh tutrobo/Groot 20230818
+          ../../scripts/download-release.sh tutrobo/igh-ethercat debian/1.5.2-2
 
       - name: Generate APT Repository
         run: scripts/generate-repo.sh
