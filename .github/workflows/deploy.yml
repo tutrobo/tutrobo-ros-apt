@@ -39,7 +39,7 @@ jobs:
           mkdir -p debs/jammy && cd debs/jammy
           ../../scripts/download-release.sh tutrobo/jsk_visualization 20230818
           ../../scripts/download-release.sh tutrobo/casadi_vendor 20230818
-          ../../scripts/download-release.sh tutrobo/Groot 20230818
+          ../../scripts/download-release.sh tutrobo/Groot 20230820
           ../../scripts/download-release.sh tutrobo/igh-ethercat debian/1.5.2-2
 
       - name: Generate APT Repository
