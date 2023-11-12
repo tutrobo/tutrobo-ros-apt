@@ -41,6 +41,7 @@ jobs:
           ../../scripts/download-release.sh tutrobo/casadi_vendor 20230818
           ../../scripts/download-release.sh tutrobo/Groot 20230820
           ../../scripts/download-release.sh tutrobo/igh-ethercat debian/1.5.2-2
+          ../../scripts/download-release.sh tutrobo/Azure_Kinect_ROS_Driver 20231112
 
       - name: Generate APT Repository
         run: scripts/generate-repo.sh
